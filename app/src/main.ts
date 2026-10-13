@@ -499,4 +499,11 @@ function openWeightModal() {
 
 window.addEventListener('DOMContentLoaded', () => {
   initApp();
+
+  // Register Offline Service Worker for 24/7 Gym usage without PC
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch((err) => {
+      console.warn('Service Worker registration skipped:', err);
+    });
+  }
 });
