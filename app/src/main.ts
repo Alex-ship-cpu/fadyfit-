@@ -28,8 +28,17 @@ function initApp() {
   const currentLang = i18n.getLang();
 
   appEl.innerHTML = `
-    <!-- Top Header Bar with Language Switcher -->
+    <!-- Top Header Bar with Dynamic Island HUD & Language Switcher -->
     <header class="app-header">
+      <!-- Apple Dynamic Island Live Activity -->
+      <div class="dynamic-island-hud" id="island-hud">
+        <div class="hud-left">
+          <div class="hud-dot"></div>
+          <span>Anabolic Phase Active · 4,170 kcal</span>
+        </div>
+        <div class="hud-timer" id="island-live-indicator">LIVE HUD</div>
+      </div>
+
       <div class="flex items-center justify-between">
         <div>
           <span class="text-overline" style="color: var(--primary-light);">Elite Athletic Engine</span>

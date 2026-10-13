@@ -165,10 +165,47 @@ input, button, select, textarea {
 
 .app-header {
   flex-shrink: 0;
-  padding: calc(var(--safe-top) + 8px) var(--gap-xl) var(--gap-md);
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  padding: calc(var(--safe-top) + 6px) var(--gap-xl) var(--gap-md);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   z-index: 100;
+}
+
+/* Dynamic Island Live Activity Pill */
+.dynamic-island-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #000000;
+  color: #FFFFFF;
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.dynamic-island-hud .hud-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dynamic-island-hud .hud-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 8px #22C55E;
+}
+
+.dynamic-island-hud .hud-timer {
+  font-family: 'SF Pro Display', monospace;
+  font-weight: 700;
+  color: #F59E0B;
 }
 
 .app-header h1 {
@@ -199,8 +236,10 @@ input, button, select, textarea {
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
   padding: 6px 0 calc(var(--safe-bottom) + 6px);
   z-index: 100;
   position: relative;
