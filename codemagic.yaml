@@ -1,0 +1,44 @@
+workflows:
+  ios-sideloadly-build:
+    name: Build FadyFit Native iOS IPA
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+    environment:
+      node: 20.x
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Install dependencies & Build Web Core
+        script: |
+          cd app
+          npm install
+          npm run build
+
+      - name: Setup Capacitor iOS Project
+        script: |
+          cd app
+          npx cap add ios || true
+          npx cap sync ios
+
+      - name: Compile Native Mach-O Xcode Archive
+        script: |
+          cd app/ios/App
+          xcodebuild -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -sdk iphoneos \
+            -archivePath build/App.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            archive
+
+      - name: Package Payload into FadyFit.ipa
+        script: |
+          cd app/ios/App/build
+          mkdir -p Payload
+          cp -r App.xcarchive/Products/Applications/App.app Payload/
+          zip -r FadyFit.ipa Payload
+          mv FadyFit.ipa $CM_BUILD_DIR/FadyFit.ipa
+    artifacts:
+      - FadyFit.ipa
