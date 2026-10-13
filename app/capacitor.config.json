@@ -1,0 +1,11 @@
+{
+  "appId": "com.fadyfit.apex",
+  "appName": "FadyFit",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "ios": {
+    "contentInset": "automatic",
+    "allowsLinkPreview": false,
+    "scrollEnabled": true
+  }
+}

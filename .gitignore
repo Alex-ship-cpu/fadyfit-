@@ -1,0 +1,18 @@
+# Node dependencies
+node_modules/
+app/node_modules/
+
+# Production build outputs
+dist/
+app/dist/
+
+# iOS local platforms & builds
+ios/
+app/ios/
+*.ipa
+*.xcarchive
+
+# Logs & temp
+*.log
+.DS_Store
+Thumbs.db
